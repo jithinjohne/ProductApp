@@ -164,9 +164,9 @@ namespace ProductApp.Web.Test
 
             var result = await _productsController.Edit(productId);
 
-            var redirect = Assert.IsType<OkResult>(result);
+            var redirect = Assert.IsType<NotFoundResult>(result);
 
-            Assert.Equal<int>(200, redirect.StatusCode);
+            Assert.Equal<int>(404, redirect.StatusCode);
         }
 
         [Theory]
