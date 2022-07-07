@@ -47,6 +47,8 @@ namespace ProductApp.Web.Repository
             product.Name = entity.Name;
             product.Price = entity.Price;
             product.Stock = entity.Stock;
+            //saving color
+            product.Color = entity.Color;
         }
     }
 }
