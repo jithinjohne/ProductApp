@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProductApp.Web.Models;
 using ProductApp.Web.Repository;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,7 +24,9 @@ namespace ProductApp.Web.Controllers
             var products = await _repository.GetAll();
             if (!string.IsNullOrEmpty(searchString))
             {
-                //TODO: Implement
+                //TODO: Implement               
+                products = products.Where(s => s.Name.Contains(searchString));
+                return View(products);
             }
 
             switch (sortOrder)
@@ -31,6 +34,9 @@ namespace ProductApp.Web.Controllers
                 //TODO: Implement
                 default:
                     products = products.OrderBy(s => s.Name);
+                    break;
+                case "Price":
+                    products = products.OrderBy(s => s.Price);
                     break;
             }
             return View(products);
