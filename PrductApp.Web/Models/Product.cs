@@ -10,6 +10,8 @@ namespace ProductApp.Web.Models
         [Required]
         public decimal? Price { get; set; }
         [Required]
+        // Restricting Stock to accept only positive numbers
+        [Range(0,int.MaxValue,ErrorMessage ="Please enter valid stock")]
         public int? Stock { get; set; }
         [Required]
         public string Color { get; set; }
