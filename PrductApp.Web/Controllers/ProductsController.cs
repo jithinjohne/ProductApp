@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProductApp.Web.Controllers
 {
+    // just for testing..
     public class ProductsController : Controller
     {
         private readonly IRepository<Product> _repository;
