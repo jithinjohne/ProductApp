@@ -24,11 +24,18 @@ namespace ProductApp.Web.Controllers
             if (!string.IsNullOrEmpty(searchString))
             {
                 //TODO: Implement
+
             }
 
             switch (sortOrder)
             {
                 //TODO: Implement
+                case "name_desc":
+                    products = products.OrderBy(s => s.Name);
+                    break;
+                case "Price":
+                    products = products.OrderBy(s => s.Price);
+                    break;
                 default:
                     products = products.OrderBy(s => s.Name);
                     break;
