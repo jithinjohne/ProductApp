@@ -24,7 +24,7 @@ namespace ProductApp.Web.Controllers
             if (!string.IsNullOrEmpty(searchString))
             {
                 //TODO: Implement
-
+                products = products.Where(a => a.Name == searchString);
             }
 
             switch (sortOrder)
