@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProductApp.Web.Controllers
 {
+    // just for testing..
     public class ProductsController : Controller
     {
         private readonly IRepository<Product> _repository;
@@ -23,12 +24,28 @@ namespace ProductApp.Web.Controllers
             var products = await _repository.GetAll();
             if (!string.IsNullOrEmpty(searchString))
             {
-                //TODO: Implement
+                //TODO: Implement search on product name..
+                 products= products.Where(x => x.Name.ToUpper().Contains(searchString.ToUpper()));
             }
 
             switch (sortOrder)
             {
-                //TODO: Implement
+                //TODO: Implement sorting on Name and Price..
+                case "name_desc":
+                    products=products.OrderByDescending(x => x.Name);
+                    break;
+                case "Name":
+                    products=products.OrderBy(x => x.Name);
+                    break;
+                case "":
+                    products = products.OrderBy(x => x.Name);
+                    break;
+                case "price_desc":
+                    products = products.OrderByDescending(x => x.Price);
+                    break;
+                case "Price":
+                    products = products.OrderBy(x => x.Price);
+                    break;
                 default:
                     products = products.OrderBy(s => s.Name);
                     break;
